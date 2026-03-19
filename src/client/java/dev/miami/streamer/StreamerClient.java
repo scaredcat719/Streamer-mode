@@ -1,4 +1,4 @@
-package com.example;
+package dev.miami.streamer;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;

@@ -1,4 +1,4 @@
-package com.example;
+package dev.miami.streamer;
 
 import lombok.Getter;
 import lombok.Setter;

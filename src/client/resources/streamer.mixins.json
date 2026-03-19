@@ -3,12 +3,12 @@
   "package": "com.example.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "TextVisitFactoryMixin"
+    "dev.miami.streamer.mixin.client.TextVisitFactoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "TextVisitFactoryMixin"
+    "dev.miami.streamer.mixin.client.TextVisitFactoryMixin"
   ]
 }

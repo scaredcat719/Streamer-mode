@@ -16,14 +16,14 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.TemplateMod"
+          "dev.miami.streamer.TemplateMod"
 		],
 		"client": [
-          "com.example.StreamerClient"
+          "dev.miami.streamer.StreamerClient"
 		]
 	},
 	"mixins": [
-		"template-mod.mixins.json",
+		"streamer.mixins.json",
 		{
 			"config": "streamer.mixins.json",
 			"environment": "client"

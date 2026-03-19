@@ -1,4 +1,4 @@
-package com.example;
+package dev.miami.streamer;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;

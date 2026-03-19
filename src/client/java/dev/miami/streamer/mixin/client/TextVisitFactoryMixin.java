@@ -1,14 +1,12 @@
-package com.example.mixin.client;
+package dev.miami.streamer.mixin.client;
 
-import com.example.StreamerConfig;
+import dev.miami.streamer.StreamerConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TextVisitFactory;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TextVisitFactory.class)
 public class TextVisitFactoryMixin {
