@@ -1,14 +1,14 @@
 {
   "required": true,
-  "package": "com.example.mixin.client",
+  "package": "dev.miami.streamer.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "dev.miami.streamer.mixin.client.TextVisitFactoryMixin"
+    "TextVisitFactoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "dev.miami.streamer.mixin.client.TextVisitFactoryMixin"
+    "TextVisitFactoryMixin"
   ]
 }
