@@ -21,4 +21,8 @@ public class StreamerConfig {
         enabled = !enabled;
     }
     public void toggleHideOthers()   { hideOthers = !hideOthers; }
+    @Getter @Setter private boolean hideSkin = false;
+    public void toggleHideSkin() { hideSkin = !hideSkin; }
+    @Getter @Setter private boolean hideCoords = false;
+    public void toggleHideCoords() { hideCoords = !hideCoords; }
 }

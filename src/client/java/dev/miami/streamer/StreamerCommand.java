@@ -29,7 +29,26 @@ public class StreamerCommand {
                                             return 1;
                                         })
                                 )
+                                .then(literal("hideskin")
+                                        .executes(ctx -> {
+                                            StreamerConfig.getInstance().toggleHideSkin();
+                                            ctx.getSource().sendFeedback(
+                                                    Text.literal("Skin hider " + (StreamerConfig.getInstance().isHideSkin() ? "§aenabled" : "§cdisabled"))
+                                            );
+                                            return 1;
+                                        })
+                                )
+                                .then(literal("hidecoords")
+                                        .executes(ctx -> {
+                                            StreamerConfig.getInstance().toggleHideCoords();
+                                            ctx.getSource().sendFeedback(
+                                                    Text.literal("Hide coords " + (StreamerConfig.getInstance().isHideCoords() ? "§aenabled" : "§cdisabled"))
+                                            );
+                                            return 1;
+                                        })
+                                )
                         )
+
                         .then(literal("change")
                                 .then(literal("self")
                                         .then(argument("username", StringArgumentType.word())

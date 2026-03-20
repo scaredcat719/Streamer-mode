@@ -3,6 +3,8 @@
   "package": "dev.miami.streamer.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "DebugHudMixin",
+    "PlayerListEntryMixin",
     "TextVisitFactoryMixin"
   ],
   "injectors": {
