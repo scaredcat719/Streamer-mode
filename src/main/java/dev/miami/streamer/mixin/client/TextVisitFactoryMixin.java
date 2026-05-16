@@ -1,6 +1,8 @@
 package dev.miami.streamer.mixin.client;
 
 import dev.miami.streamer.StreamerConfig;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TextVisitFactory;
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,6 +10,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+@Environment(EnvType.CLIENT)
 @Mixin(TextVisitFactory.class)
 public class TextVisitFactoryMixin {
 	@Unique private static final MinecraftClient mc = MinecraftClient.getInstance();

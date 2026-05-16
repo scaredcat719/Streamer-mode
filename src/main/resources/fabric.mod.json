@@ -17,7 +17,7 @@
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"dev.miami.streamer.StreamerClient"
+			"dev.miami.streamer.Streamer"
 		]
 	},
 	"mixins": [
