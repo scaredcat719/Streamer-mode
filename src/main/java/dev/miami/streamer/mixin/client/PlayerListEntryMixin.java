@@ -2,6 +2,8 @@ package dev.miami.streamer.mixin.client;
 
 import com.mojang.authlib.GameProfile;
 import dev.miami.streamer.StreamerConfig;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.entity.player.PlayerSkinType;
@@ -15,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@Environment(EnvType.CLIENT)
 @Mixin(PlayerListEntry.class)
 public class PlayerListEntryMixin {
 

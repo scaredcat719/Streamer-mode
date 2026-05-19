@@ -1,6 +1,8 @@
 package dev.miami.streamer.mixin.client;
 
 import dev.miami.streamer.StreamerConfig;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.DebugHud;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Environment(EnvType.CLIENT)
 @Mixin(DebugHud.class)
 public class DebugHudMixin {
 

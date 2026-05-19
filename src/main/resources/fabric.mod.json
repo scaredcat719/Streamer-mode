@@ -3,36 +3,29 @@
 	"id": "streamer",
 	"version": "${version}",
 	"name": "Streamer",
-	"description": "Streamer",
+	"description": "Changes your name & others client-side, in order to prevent sniping or accidental leaks (such as alternative accounts) while streaming or recording.",
 	"authors": [
 		"Miami"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/streaming",
+		"sources": "https://github.com/isawatweet/Streamer-mode",
+		"issues": "https://github.com/isawatweet/Streamer-mode/issues"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/streamer/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"dev.miami.streamer.StreamerMain"
-		],
 		"client": [
-          "dev.miami.streamer.StreamerClient"
+			"dev.miami.streamer.Streamer"
 		]
 	},
 	"mixins": [
-		"streamer-main.mixins.json",
-		{
-			"config": "streamer.mixins.json",
-			"environment": "client"
-		}
+		"streamer.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.18.4",
 		"minecraft": ">=1.21.9",
-		"java": ">=21",
 		"fabric-api": "*"
 	}
 }
