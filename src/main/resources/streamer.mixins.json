@@ -1,11 +1,11 @@
 {
   "required": true,
   "package": "dev.miami.streamer.mixin.client",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "client": [
-    "DebugHudMixin",
-    "PlayerListEntryMixin",
-    "TextVisitFactoryMixin"
+    "DebugScreenOverlayMixin",
+    "PlayerInfoMixin",
+    "StringDecomposerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

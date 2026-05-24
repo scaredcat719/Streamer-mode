@@ -4,12 +4,12 @@ import com.mojang.authlib.GameProfile;
 import dev.miami.streamer.StreamerConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.entity.player.PlayerSkinType;
-import net.minecraft.entity.player.SkinTextures;
-import net.minecraft.util.AssetInfo;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.PlayerInfo;
+import net.minecraft.core.ClientAsset;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.player.PlayerModelType;
+import net.minecraft.world.entity.player.PlayerSkin;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,32 +18,32 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Environment(EnvType.CLIENT)
-@Mixin(PlayerListEntry.class)
-public class PlayerListEntryMixin {
+@Mixin(PlayerInfo.class)
+public class PlayerInfoMixin {
 
     @Shadow @Final private GameProfile profile;
 
-    @Inject(method = "getSkinTextures", at = @At("RETURN"), cancellable = true)
-    private void hideSkin(CallbackInfoReturnable<SkinTextures> ci) {
+    @Inject(method = "getSkin", at = @At("RETURN"), cancellable = true)
+    private void hideSkin(CallbackInfoReturnable<PlayerSkin> ci) {
         StreamerConfig cfg = StreamerConfig.getInstance();
         if (!cfg.isEnabled() || !cfg.isHideSkin()) return;
 
-        MinecraftClient mc = MinecraftClient.getInstance();
+        Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
         if (!profile.id().equals(mc.player.getGameProfile().id())) return;
 
-        SkinTextures original = ci.getReturnValue();
-        boolean slim = original.model() == PlayerSkinType.SLIM;
+        PlayerSkin original = ci.getReturnValue();
+        boolean slim = original.model() == PlayerModelType.SLIM;
 
-        AssetInfo.TextureAssetInfo replacementBody = new AssetInfo.TextureAssetInfo(
-                Identifier.of("streamer", "skins/" + (slim ? "alex" : "steve"))
+        ClientAsset.Texture replacementBody = new ClientAsset.ResourceTexture(
+                Identifier.fromNamespaceAndPath("streamer", "skins/" + (slim ? "alex" : "steve"))
         );
 
-        ci.setReturnValue(new SkinTextures(
+        ci.setReturnValue(new PlayerSkin(
                 replacementBody,
                 original.cape(),
                 original.elytra(),
-                slim ? PlayerSkinType.SLIM : PlayerSkinType.WIDE,
+                slim ? PlayerModelType.SLIM : PlayerModelType.WIDE,
                 original.secure()
         ));
     }
