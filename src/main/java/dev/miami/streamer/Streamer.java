@@ -7,11 +7,10 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 
 @Environment(EnvType.CLIENT)
 public class Streamer implements ClientModInitializer {
-	@Override
-	public void onInitializeClient() {
-
-		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-			StreamerCommand.register(dispatcher);
-		});
-	}
+    @Override
+    public void onInitializeClient() {
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            StreamerCommand.register(dispatcher);
+        });
+    }
 }
