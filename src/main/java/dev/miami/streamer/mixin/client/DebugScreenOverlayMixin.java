@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class DebugScreenOverlayMixin {
 
     @Inject(method = "extractLines", at = @At("HEAD"))
-    private void filterDebugText(GuiGraphicsExtractor graphics, List<String> lines, boolean alignLeft, CallbackInfo ci, @Local(name = "lines", argsOnly = true) LocalRef<List<String>> linesRef) {
+    private void filterDebugText(GuiGraphicsExtractor graphics, List<String> lines, boolean alignLeft, int scaledScreenWidth, CallbackInfo ci, @Local(name = "lines", argsOnly = true) LocalRef<List<String>> linesRef) {
         if (StreamerConfig.getInstance().isEnabled() && StreamerConfig.getInstance().isHideCoords()) {
             List<String> filtered;
             filtered = lines.stream()
