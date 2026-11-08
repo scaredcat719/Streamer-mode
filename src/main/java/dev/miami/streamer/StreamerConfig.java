@@ -7,25 +7,27 @@ import net.fabricmc.api.Environment;
 
 @Environment(EnvType.CLIENT)
 public class StreamerConfig {
-    private static StreamerConfig instance;
-
-    public static StreamerConfig getInstance() {
-        if (instance == null)
-            instance = new StreamerConfig();
-        return instance;
-    }
+    @Getter private final static StreamerConfig instance = new StreamerConfig();
 
     @Getter @Setter private boolean enabled = false;
     @Getter @Setter boolean hideOthers = false;
-    @Getter @Setter private String selfName = "Streamer";
+    @Getter @Setter private String selfName = "Miami";
     @Setter @Getter private String othersName = "Player";
+    @Getter @Setter private boolean hideSkin = false;
+    @Getter @Setter private boolean hideCoords = false;
 
-    public void toggleEnabled()      {
+    public void toggleEnabled() {
         enabled = !enabled;
     }
-    public void toggleHideOthers()   { hideOthers = !hideOthers; }
-    @Getter @Setter private boolean hideSkin = false;
-    public void toggleHideSkin() { hideSkin = !hideSkin; }
-    @Getter @Setter private boolean hideCoords = false;
-    public void toggleHideCoords() { hideCoords = !hideCoords; }
+
+    public void toggleHideOthers() {
+        hideOthers = !hideOthers;
+    }
+    public void toggleHideSkin() {
+        hideSkin = !hideSkin;
+    }
+
+    public void toggleHideCoords() {
+        hideCoords = !hideCoords;
+    }
 }

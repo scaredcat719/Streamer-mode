@@ -9,8 +9,8 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/streaming",
-		"sources": "https://github.com/isawatweet/Streamer-mode",
-		"issues": "https://github.com/isawatweet/Streamer-mode/issues"
+		"sources": "https://github.com/scaredcat719/Streamer-mode",
+		"issues": "https://github.com/scaredcat719/Streamer-mode/issues"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/streamer/icon.png",
@@ -25,7 +25,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.18.4",
-		"minecraft": ">=26.1",
+		"minecraft": "26.2",
 		"fabric-api": "*"
 	}
 }

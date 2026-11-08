@@ -2,6 +2,7 @@ package dev.miami.streamer;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
@@ -19,35 +20,27 @@ public class StreamerCommand {
                         .then(literal("toggle")
                                 .executes(ctx -> {
                                     StreamerConfig.getInstance().toggleEnabled();
-                                    ctx.getSource().sendFeedback(
-                                            Component.literal("Streamer mode " + (StreamerConfig.getInstance().isEnabled() ? "§aenabled" : "§cdisabled"))
-                                    );
+                                    sendFeedback(ctx, "Streamer mode " + (StreamerConfig.getInstance().isEnabled() ? "§aenabled" : "§cdisabled"));
                                     return 1;
                                 })
                                 .then(literal("hideothers")
                                         .executes(ctx -> {
                                             StreamerConfig.getInstance().toggleHideOthers();
-                                            ctx.getSource().sendFeedback(
-                                                    Component.literal("Hide others " + (StreamerConfig.getInstance().isHideOthers() ? "§aenabled" : "§cdisabled"))
-                                            );
+                                            sendFeedback(ctx, "Hide others " + (StreamerConfig.getInstance().isHideOthers() ? "§aenabled" : "§cdisabled"));
                                             return 1;
                                         })
                                 )
                                 .then(literal("hideskin")
                                         .executes(ctx -> {
                                             StreamerConfig.getInstance().toggleHideSkin();
-                                            ctx.getSource().sendFeedback(
-                                                    Component.literal("Skin hider " + (StreamerConfig.getInstance().isHideSkin() ? "§aenabled" : "§cdisabled"))
-                                            );
+                                            sendFeedback(ctx, "Skin hider " + (StreamerConfig.getInstance().isHideSkin() ? "§aenabled" : "§cdisabled"));
                                             return 1;
                                         })
                                 )
                                 .then(literal("hidecoords")
                                         .executes(ctx -> {
                                             StreamerConfig.getInstance().toggleHideCoords();
-                                            ctx.getSource().sendFeedback(
-                                                    Component.literal("Hide coords " + (StreamerConfig.getInstance().isHideCoords() ? "§aenabled" : "§cdisabled"))
-                                            );
+                                            sendFeedback(ctx, "Hide coords " + (StreamerConfig.getInstance().isHideCoords() ? "§aenabled" : "§cdisabled"));
                                             return 1;
                                         })
                                 )
@@ -59,9 +52,7 @@ public class StreamerCommand {
                                                 .executes(ctx -> {
                                                     String name = StringArgumentType.getString(ctx, "username");
                                                     StreamerConfig.getInstance().setSelfName(name);
-                                                    ctx.getSource().sendFeedback(
-                                                            Component.literal("§aYour display name set to: §f" + name)
-                                                    );
+                                                    sendFeedback(ctx, "§aYour display name set to: §f" + name);
                                                     return 1;
                                                 })
                                         )
@@ -71,14 +62,16 @@ public class StreamerCommand {
                                                 .executes(ctx -> {
                                                     String name = StringArgumentType.getString(ctx, "username");
                                                     StreamerConfig.getInstance().setOthersName(name);
-                                                    ctx.getSource().sendFeedback(
-                                                            Component.literal("§aOthers display name set to: §f" + name)
-                                                    );
+                                                    sendFeedback(ctx, "§aOthers display name set to: §f" + name);
                                                     return 1;
                                                 })
                                         )
                                 )
                         )
         );
+    }
+
+    private static void sendFeedback(CommandContext<FabricClientCommandSource> ctx, String feedback) {
+        ctx.getSource().sendFeedback(Component.literal("§6[Streamer] §f" + feedback));
     }
 }
